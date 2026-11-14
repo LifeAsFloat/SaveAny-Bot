@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Deployment Guide on Save Any Bot</title><link>https://sabot.unv.app/en/deployment/</link><description>Recent content in Deployment Guide on Save Any Bot</description><generator>Hugo</generator><language>en</language><atom:link href="https://sabot.unv.app/en/deployment/index.xml" rel="self" type="application/rss+xml"/><item><title>Installation and updates</title><link>https://sabot.unv.app/en/deployment/installation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sabot.unv.app/en/deployment/installation/</guid><description>&lt;h1 id="installation-and-updates">
+ Installation and updates
+ &lt;a class="anchor" href="#installation-and-updates">#&lt;/a>
+&lt;/h1>
+&lt;p>Start with an empty data directory, then configure the bot, storage, and users in the web console.&lt;/p>
+&lt;h2 id="binary-deployment">
+ Binary deployment
+ &lt;a class="anchor" href="#binary-deployment">#&lt;/a>
+&lt;/h2>
+&lt;p>Download and extract a release for your platform:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>chmod +x saveany-bot
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./saveany-bot
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The default data directory is &lt;code>data/&lt;/code> under the current working directory. The web UI listens on &lt;code>127.0.0.1:28080&lt;/code> by default. At startup it prints a direct URL with an access token:&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>Web UI available at http://127.0.0.1:28080/?token=...
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Open that URL; the token creates an authenticated session. Unless an access token is set under &lt;strong>Settings → Web&lt;/strong>, a new token is generated on every start.&lt;/p></description></item><item><title>Migrate from v0</title><link>https://sabot.unv.app/en/deployment/migration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://sabot.unv.app/en/deployment/migration/</guid><description>&lt;h1 id="migrate-from-v0">
+ Migrate from v0
+ &lt;a class="anchor" href="#migrate-from-v0">#&lt;/a>
+&lt;/h1>
+&lt;p>v1 stores configuration in a local SQLite database. On first startup, it imports a legacy v0 &lt;code>config.toml&lt;/code> once, then all settings are managed from the web console.&lt;/p>
+&lt;p>v1 does not migrate Telegram sessions. The v0 &lt;code>session.db&lt;/code> and &lt;code>usersession.db&lt;/code> files were created by gotgproto and are no longer read. Migration imports the legacy configuration; v1 uses a new database. The bot signs in again with the configured token, and an enabled Userbot must sign in again from the web console. Back up all existing files before upgrading.&lt;/p></description></item></channel></rss>
